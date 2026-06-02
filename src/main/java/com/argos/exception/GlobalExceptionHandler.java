@@ -109,4 +109,43 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(UsuarioJaExisteException.class)
+    public ResponseEntity<ErrorResponse> handleUsuarioJaExiste(
+            UsuarioJaExisteException ex, HttpServletRequest request) {
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .status(409)
+                .error("Conflito")
+                .message(ex.getMessage())
+                .path(request.getRequestURI())
+                .build());
+    }
+
+    @ExceptionHandler(CredenciaisInvalidasException.class)
+    public ResponseEntity<ErrorResponse> handleCredenciaisInvalidas(
+            CredenciaisInvalidasException ex, HttpServletRequest request) {
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .status(401)
+                .error("Não Autorizado")
+                .message(ex.getMessage())
+                .path(request.getRequestURI())
+                .build());
+    }
+
+    @ExceptionHandler(TokenInvalidoException.class)
+    public ResponseEntity<ErrorResponse> handleTokenInvalido(
+            TokenInvalidoException ex, HttpServletRequest request) {
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .status(401)
+                .error("Token Inválido")
+                .message(ex.getMessage())
+                .path(request.getRequestURI())
+                .build());
+    }
 }

@@ -1,0 +1,153 @@
+-- Script de criação de tabelas para Oracle SQL - Projeto Argos
+-- Manutenção Preditiva para Operações Espaciais
+-- Este script é idempotente: não destrói dados existentes
+
+-- Criar sequências se não existirem
+DECLARE
+  v_seq_count NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO v_seq_count FROM user_sequences WHERE sequence_name = 'SEQ_USUARIO';
+  IF v_seq_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE SEQUENCE SEQ_USUARIO START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE';
+  END IF;
+
+  SELECT COUNT(*) INTO v_seq_count FROM user_sequences WHERE sequence_name = 'SEQ_MISSAO';
+  IF v_seq_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE SEQUENCE SEQ_MISSAO START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE';
+  END IF;
+  
+  SELECT COUNT(*) INTO v_seq_count FROM user_sequences WHERE sequence_name = 'SEQ_LEITURA_SENSOR';
+  IF v_seq_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE SEQUENCE SEQ_LEITURA_SENSOR START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE';
+  END IF;
+  
+  SELECT COUNT(*) INTO v_seq_count FROM user_sequences WHERE sequence_name = 'SEQ_ALERTA';
+  IF v_seq_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE SEQUENCE SEQ_ALERTA START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE';
+  END IF;
+END;
+/
+
+-- Criar tabela TB_USUARIO se não existir
+DECLARE
+  v_table_count NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO v_table_count FROM user_tables WHERE table_name = 'TB_USUARIO';
+  IF v_table_count = 0 THEN
+    EXECUTE IMMEDIATE '
+      CREATE TABLE TB_USUARIO (
+        ID_USUARIO NUMBER(19) PRIMARY KEY,
+        EMAIL VARCHAR2(150) NOT NULL UNIQUE,
+        SENHA VARCHAR2(255) NOT NULL,
+        NM_USUARIO VARCHAR2(100) NOT NULL,
+        FL_ATIVO CHAR(1) DEFAULT ''Y'' NOT NULL,
+        DT_CRIACAO TIMESTAMP DEFAULT SYSDATE NOT NULL,
+        DT_ATUALIZACAO TIMESTAMP DEFAULT SYSDATE NOT NULL
+      )
+    ';
+  END IF;
+END;
+/
+
+-- Criar tabela TB_MISSAO se não existir
+DECLARE
+  v_table_count NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO v_table_count FROM user_tables WHERE table_name = 'TB_MISSAO';
+  IF v_table_count = 0 THEN
+    EXECUTE IMMEDIATE '
+      CREATE TABLE TB_MISSAO (
+        ID_MISSAO NUMBER(19) PRIMARY KEY,
+        NM_MISSAO VARCHAR2(100) NOT NULL,
+        DS_MISSAO VARCHAR2(500) NOT NULL,
+        TP_STATUS VARCHAR2(20) NOT NULL,
+        TP_RISCO VARCHAR2(20) NOT NULL,
+        DS_AREA VARCHAR2(150) NOT NULL,
+        DT_CRIACAO TIMESTAMP DEFAULT SYSDATE NOT NULL,
+        DT_ATUALIZACAO TIMESTAMP DEFAULT SYSDATE NOT NULL
+      )
+    ';
+  END IF;
+END;
+/
+
+-- Criar tabela TB_LEITURA_SENSOR se não existir
+DECLARE
+  v_table_count NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO v_table_count FROM user_tables WHERE table_name = 'TB_LEITURA_SENSOR';
+  IF v_table_count = 0 THEN
+    EXECUTE IMMEDIATE '
+      CREATE TABLE TB_LEITURA_SENSOR (
+        ID_LEITURA NUMBER(19) PRIMARY KEY,
+        ID_MISSAO NUMBER(19) NOT NULL,
+        TP_SENSOR VARCHAR2(20) NOT NULL,
+        VL_LEITURA NUMBER(10,2) NOT NULL,
+        DS_UNIDADE VARCHAR2(20),
+        DT_LEITURA TIMESTAMP DEFAULT SYSDATE NOT NULL,
+        FL_ANOMALIA CHAR(1) DEFAULT ''N'',
+        CONSTRAINT FK_LEITURA_MISSAO FOREIGN KEY (ID_MISSAO) REFERENCES TB_MISSAO(ID_MISSAO) ON DELETE CASCADE
+      )
+    ';
+  END IF;
+END;
+/
+
+-- Criar tabela TB_ALERTA se não existir
+DECLARE
+  v_table_count NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO v_table_count FROM user_tables WHERE table_name = 'TB_ALERTA';
+  IF v_table_count = 0 THEN
+    EXECUTE IMMEDIATE '
+      CREATE TABLE TB_ALERTA (
+        ID_ALERTA NUMBER(19) PRIMARY KEY,
+        ID_MISSAO NUMBER(19) NOT NULL,
+        DS_MENSAGEM VARCHAR2(300) NOT NULL,
+        TP_SEVERIDADE VARCHAR2(20) NOT NULL,
+        FL_RESOLVIDO CHAR(1) DEFAULT ''N'',
+        DT_ALERTA TIMESTAMP DEFAULT SYSDATE NOT NULL,
+        CONSTRAINT FK_ALERTA_MISSAO FOREIGN KEY (ID_MISSAO) REFERENCES TB_MISSAO(ID_MISSAO) ON DELETE CASCADE
+      )
+    ';
+  END IF;
+END;
+/
+
+-- Criar índices se não existirem
+DECLARE
+  v_index_count NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO v_index_count FROM user_indexes WHERE index_name = 'IDX_MISSAO_STATUS';
+  IF v_index_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE INDEX IDX_MISSAO_STATUS ON TB_MISSAO(TP_STATUS)';
+  END IF;
+  
+  SELECT COUNT(*) INTO v_index_count FROM user_indexes WHERE index_name = 'IDX_MISSAO_AREA';
+  IF v_index_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE INDEX IDX_MISSAO_AREA ON TB_MISSAO(DS_AREA)';
+  END IF;
+  
+  SELECT COUNT(*) INTO v_index_count FROM user_indexes WHERE index_name = 'IDX_LEITURA_MISSAO';
+  IF v_index_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE INDEX IDX_LEITURA_MISSAO ON TB_LEITURA_SENSOR(ID_MISSAO)';
+  END IF;
+  
+  SELECT COUNT(*) INTO v_index_count FROM user_indexes WHERE index_name = 'IDX_LEITURA_ANOMALIA';
+  IF v_index_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE INDEX IDX_LEITURA_ANOMALIA ON TB_LEITURA_SENSOR(FL_ANOMALIA)';
+  END IF;
+  
+  SELECT COUNT(*) INTO v_index_count FROM user_indexes WHERE index_name = 'IDX_ALERTA_MISSAO';
+  IF v_index_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE INDEX IDX_ALERTA_MISSAO ON TB_ALERTA(ID_MISSAO)';
+  END IF;
+  
+  SELECT COUNT(*) INTO v_index_count FROM user_indexes WHERE index_name = 'IDX_ALERTA_SEVERIDADE';
+  IF v_index_count = 0 THEN
+    EXECUTE IMMEDIATE 'CREATE INDEX IDX_ALERTA_SEVERIDADE ON TB_ALERTA(TP_SEVERIDADE)';
+  END IF;
+END;
+/
+
+COMMIT;

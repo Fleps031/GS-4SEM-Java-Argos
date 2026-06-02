@@ -16,7 +16,8 @@ import java.time.LocalDateTime;
 public class Missao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "MISSAO_SEQ", sequenceName = "SEQ_MISSAO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MISSAO_SEQ")
     @Column(name = "ID_MISSAO")
     private Long id;
 
