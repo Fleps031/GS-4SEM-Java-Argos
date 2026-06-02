@@ -16,6 +16,15 @@ Todos os endpoints são protegidos por **autenticação JWT**. Para acessar a AP
 
 ---
 
+## 🌍 ODS Relacionados
+
+| ODS | Descrição |
+|---|---|
+| **ODS 9** | Indústria, Inovação e Infraestrutura |
+| **ODS 11** | Cidades e Comunidades Sustentáveis |
+
+---
+
 ## 👥 Integrantes
 
 | Nome | RM |
@@ -23,7 +32,7 @@ Todos os endpoints são protegidos por **autenticação JWT**. Para acessar a AP
 | Davis Junior | RM 560723 |
 | Felipe Molinari | RM 559885 |
 | Francisco Vargas | RM 560322 |
-| Matheus Eiki | RM 55948 |
+| Matheus Eiki | RM 559483 |
 | Matheus Machado Caposse | RM 560340 |
 
 ---
@@ -270,3 +279,5 @@ src/
 | OpenAPI JSON | `http://localhost:8080/v3/api-docs` |
 | Repositório | https://github.com/Fleps031/GS-4SEM-Java-Argos |
 | Vídeo explicativo | https://www.youtube.com/watch?v=DPnwoORV_pc |
+| Exemplos de retorno da API | `EXEMPLOS_API.md` (raiz do projeto) |
+| Postman Collection | `POSTMAN_ARGOS_COLLECTION.json` (raiz do projeto) |

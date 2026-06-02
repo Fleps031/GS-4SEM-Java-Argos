@@ -1,0 +1,2836 @@
+{
+  "info": {
+    "_postman_id": "d9820308-42b5-4bee-b8b1-0ebb592771aa",
+    "name": "Projeto Argos - API de Manutenção Preditiva Espacial",
+    "description": "API REST para monitoramento de missões espaciais, registro de leituras de sensores e gerenciamento de alertas operacionais.\n\nContact Support:\n Name: Grupo 2ESPR",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52798138",
+    "_collection_link": "https://go.postman.co/collection/52798138-d9820308-42b5-4bee-b8b1-0ebb592771aa?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "missoes",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "status",
+                  "item": [
+                    {
+                      "name": "Alterar status da missão",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"CONCLUIDA\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        },
+                        "description": "Segue a máquina de estados: PLANEJADA → ATIVA → CONCLUIDA / CANCELADA"
+                      },
+                      "response": [
+                        {
+                          "name": "Status atualizado",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"CONCLUIDA\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/missoes/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "missoes",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                        },
+                        {
+                          "name": "Transição de status inválida",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"CONCLUIDA\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/missoes/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "missoes",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                        },
+                        {
+                          "name": "Missão não encontrada",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"CONCLUIDA\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/missoes/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "missoes",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                        },
+                        {
+                          "name": "Operação não permitida",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"status\": \"CONCLUIDA\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/missoes/:id/status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "missoes",
+                                ":id",
+                                "status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Buscar missão por ID",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/missoes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "missoes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "9715"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Missão encontrada",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                    },
+                    {
+                      "name": "Missão não encontrada",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Atualizar missão",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"areaOperacao\": \"string\",\n  \"descricao\": \"string\",\n  \"nome\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/missoes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "missoes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "9715"
+                        }
+                      ]
+                    },
+                    "description": "Atualiza nome, descrição e área. Não permite alterar missão CANCELADA."
+                  },
+                  "response": [
+                    {
+                      "name": "Missão atualizada",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"areaOperacao\": \"string\",\n  \"descricao\": \"string\",\n  \"nome\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                    },
+                    {
+                      "name": "Dados inválidos",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"areaOperacao\": \"string\",\n  \"descricao\": \"string\",\n  \"nome\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                    },
+                    {
+                      "name": "Missão não encontrada",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"areaOperacao\": \"string\",\n  \"descricao\": \"string\",\n  \"nome\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                    },
+                    {
+                      "name": "Operação não permitida para o status atual",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"areaOperacao\": \"string\",\n  \"descricao\": \"string\",\n  \"nome\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Excluir missão",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/missoes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "missoes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "9715"
+                        }
+                      ]
+                    },
+                    "description": "Não permite excluir missão com status ATIVA."
+                  },
+                  "response": [
+                    {
+                      "name": "Missão excluída",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": null
+                    },
+                    {
+                      "name": "Missão não encontrada",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": null
+                    },
+                    {
+                      "name": "Não é possível excluir missão ATIVA",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "resumo",
+              "item": [
+                {
+                  "name": "Dashboard resumo",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/missoes/resumo",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "missoes",
+                        "resumo"
+                      ]
+                    },
+                    "description": "Retorna total de missões, agrupamentos por status e área, e missões de risco ALTO ou CRÍTICO."
+                  },
+                  "response": [
+                    {
+                      "name": "Resumo gerado com sucesso",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/resumo",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            "resumo"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"totalMissoes\": 8583,\n  \"porStatus\": {\n    \"key_0\": 9531\n  },\n  \"porArea\": {\n    \"key_0\": 8345\n  },\n  \"missoesCriticas\": [\n    {\n      \"id\": 4772,\n      \"nome\": \"string\",\n      \"descricao\": \"string\",\n      \"status\": \"ATIVA\",\n      \"nivelRisco\": \"CRITICO\",\n      \"areaOperacao\": \"string\",\n      \"dataCriacao\": \"1974-12-27T00:50:51.253Z\",\n      \"dataAtualizacao\": \"1967-09-22T16:22:16.345Z\"\n    },\n    {\n      \"id\": 1108,\n      \"nome\": \"string\",\n      \"descricao\": \"string\",\n      \"status\": \"ATIVA\",\n      \"nivelRisco\": \"MEDIO\",\n      \"areaOperacao\": \"string\",\n      \"dataCriacao\": \"1980-06-18T18:01:52.056Z\",\n      \"dataAtualizacao\": \"1949-05-23T16:01:29.954Z\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "area",
+              "item": [
+                {
+                  "name": "{area}",
+                  "item": [
+                    {
+                      "name": "Buscar missões por área de operação",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/missoes/area/:area",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "missoes",
+                            "area",
+                            ":area"
+                          ],
+                          "variable": [
+                            {
+                              "key": "area",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "Lista retornada com sucesso",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/missoes/area/:area",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "missoes",
+                                "area",
+                                ":area"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "area",
+                                  "value": "string"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[\n  {\n    \"id\": 9281,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"status\": \"PLANEJADA\",\n    \"nivelRisco\": \"BAIXO\",\n    \"areaOperacao\": \"string\",\n    \"dataCriacao\": \"2015-01-14T22:13:22.169Z\",\n    \"dataAtualizacao\": \"1967-06-21T06:12:38.307Z\"\n  },\n  {\n    \"id\": 1917,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"status\": \"CONCLUIDA\",\n    \"nivelRisco\": \"BAIXO\",\n    \"areaOperacao\": \"string\",\n    \"dataCriacao\": \"2006-03-05T08:41:32.830Z\",\n    \"dataAtualizacao\": \"1968-04-09T15:33:54.528Z\"\n  }\n]"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Listar missões",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/missoes?status=CONCLUIDA",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "missoes"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "CONCLUIDA"
+                    }
+                  ]
+                },
+                "description": "Lista todas as missões. Filtro opcional por status: ?status=ATIVA"
+              },
+              "response": [
+                {
+                  "name": "Lista retornada com sucesso",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/missoes?status=CONCLUIDA",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "missoes"
+                      ],
+                      "query": [
+                        {
+                          "key": "status",
+                          "value": "CONCLUIDA"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"id\": 9281,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"status\": \"PLANEJADA\",\n    \"nivelRisco\": \"BAIXO\",\n    \"areaOperacao\": \"string\",\n    \"dataCriacao\": \"2015-01-14T22:13:22.169Z\",\n    \"dataAtualizacao\": \"1967-06-21T06:12:38.307Z\"\n  },\n  {\n    \"id\": 1917,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"status\": \"CONCLUIDA\",\n    \"nivelRisco\": \"BAIXO\",\n    \"areaOperacao\": \"string\",\n    \"dataCriacao\": \"2006-03-05T08:41:32.830Z\",\n    \"dataAtualizacao\": \"1968-04-09T15:33:54.528Z\"\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "Criar missão",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"areaOperacao\": \"string\",\n  \"descricao\": \"string\",\n  \"nome\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/missoes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "missoes"
+                  ]
+                },
+                "description": "Cadastra uma nova missão. Status inicial sempre PLANEJADA e risco BAIXO."
+              },
+              "response": [
+                {
+                  "name": "Missão criada com sucesso",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"areaOperacao\": \"string\",\n  \"descricao\": \"string\",\n  \"nome\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/missoes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "missoes"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                },
+                {
+                  "name": "Dados inválidos",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"areaOperacao\": \"string\",\n  \"descricao\": \"string\",\n  \"nome\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/missoes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "missoes"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"id\": 8431,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"status\": \"ATIVA\",\n  \"nivelRisco\": \"CRITICO\",\n  \"areaOperacao\": \"string\",\n  \"dataCriacao\": \"1991-03-14T05:14:56.277Z\",\n  \"dataAtualizacao\": \"2007-06-26T10:22:08.630Z\"\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "leituras",
+          "item": [
+            {
+              "name": "missao",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "sensor",
+                      "item": [
+                        {
+                          "name": "{tipo}",
+                          "item": [
+                            {
+                              "name": "Filtrar leituras por tipo de sensor",
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/leituras/missao/:id/sensor/:tipo",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "leituras",
+                                    "missao",
+                                    ":id",
+                                    "sensor",
+                                    ":tipo"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id",
+                                      "value": "9715"
+                                    },
+                                    {
+                                      "key": "tipo",
+                                      "value": "PRESSAO"
+                                    }
+                                  ]
+                                },
+                                "description": "Retorna leituras de um tipo específico de sensor para uma missão."
+                              },
+                              "response": [
+                                {
+                                  "name": "Lista retornada com sucesso",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/leituras/missao/:id/sensor/:tipo",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "leituras",
+                                        "missao",
+                                        ":id",
+                                        "sensor",
+                                        ":tipo"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "id",
+                                          "value": "9715"
+                                        },
+                                        {
+                                          "key": "tipo",
+                                          "value": "PRESSAO"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "*/*"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "body": "[\n  {\n    \"id\": 9562,\n    \"missaoId\": 6900,\n    \"tipoSensor\": \"PRESSAO\",\n    \"valorLido\": 1445.027650952233,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"1987-08-04T16:57:06.243Z\",\n    \"anomalia\": true\n  },\n  {\n    \"id\": 242,\n    \"missaoId\": 7609,\n    \"tipoSensor\": \"VIBRACAO\",\n    \"valorLido\": 5153.604579416564,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"2020-05-29T08:34:22.778Z\",\n    \"anomalia\": true\n  }\n]"
+                                },
+                                {
+                                  "name": "Missão não encontrada",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/leituras/missao/:id/sensor/:tipo",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "leituras",
+                                        "missao",
+                                        ":id",
+                                        "sensor",
+                                        ":tipo"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "id",
+                                          "value": "9715"
+                                        },
+                                        {
+                                          "key": "tipo",
+                                          "value": "PRESSAO"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "*/*"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "body": "[\n  {\n    \"id\": 9562,\n    \"missaoId\": 6900,\n    \"tipoSensor\": \"PRESSAO\",\n    \"valorLido\": 1445.027650952233,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"1987-08-04T16:57:06.243Z\",\n    \"anomalia\": true\n  },\n  {\n    \"id\": 242,\n    \"missaoId\": 7609,\n    \"tipoSensor\": \"VIBRACAO\",\n    \"valorLido\": 5153.604579416564,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"2020-05-29T08:34:22.778Z\",\n    \"anomalia\": true\n  }\n]"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "anomalias",
+                      "item": [
+                        {
+                          "name": "Listar leituras anômalas",
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/leituras/missao/:id/anomalias",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "leituras",
+                                "missao",
+                                ":id",
+                                "anomalias"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            },
+                            "description": "Retorna apenas as leituras com anomalia detectada de uma missão."
+                          },
+                          "response": [
+                            {
+                              "name": "Lista retornada com sucesso",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/leituras/missao/:id/anomalias",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "leituras",
+                                    "missao",
+                                    ":id",
+                                    "anomalias"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id",
+                                      "value": "9715"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "body": "[\n  {\n    \"id\": 9562,\n    \"missaoId\": 6900,\n    \"tipoSensor\": \"PRESSAO\",\n    \"valorLido\": 1445.027650952233,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"1987-08-04T16:57:06.243Z\",\n    \"anomalia\": true\n  },\n  {\n    \"id\": 242,\n    \"missaoId\": 7609,\n    \"tipoSensor\": \"VIBRACAO\",\n    \"valorLido\": 5153.604579416564,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"2020-05-29T08:34:22.778Z\",\n    \"anomalia\": true\n  }\n]"
+                            },
+                            {
+                              "name": "Missão não encontrada",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/leituras/missao/:id/anomalias",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "leituras",
+                                    "missao",
+                                    ":id",
+                                    "anomalias"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id",
+                                      "value": "9715"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "body": "[\n  {\n    \"id\": 9562,\n    \"missaoId\": 6900,\n    \"tipoSensor\": \"PRESSAO\",\n    \"valorLido\": 1445.027650952233,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"1987-08-04T16:57:06.243Z\",\n    \"anomalia\": true\n  },\n  {\n    \"id\": 242,\n    \"missaoId\": 7609,\n    \"tipoSensor\": \"VIBRACAO\",\n    \"valorLido\": 5153.604579416564,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"2020-05-29T08:34:22.778Z\",\n    \"anomalia\": true\n  }\n]"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Listar leituras por missão",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/leituras/missao/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "leituras",
+                            "missao",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        },
+                        "description": "Retorna todas as leituras de uma missão, ordenadas da mais recente para a mais antiga."
+                      },
+                      "response": [
+                        {
+                          "name": "Lista retornada com sucesso",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/leituras/missao/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "leituras",
+                                "missao",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[\n  {\n    \"id\": 9562,\n    \"missaoId\": 6900,\n    \"tipoSensor\": \"PRESSAO\",\n    \"valorLido\": 1445.027650952233,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"1987-08-04T16:57:06.243Z\",\n    \"anomalia\": true\n  },\n  {\n    \"id\": 242,\n    \"missaoId\": 7609,\n    \"tipoSensor\": \"VIBRACAO\",\n    \"valorLido\": 5153.604579416564,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"2020-05-29T08:34:22.778Z\",\n    \"anomalia\": true\n  }\n]"
+                        },
+                        {
+                          "name": "Missão não encontrada",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/leituras/missao/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "leituras",
+                                "missao",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[\n  {\n    \"id\": 9562,\n    \"missaoId\": 6900,\n    \"tipoSensor\": \"PRESSAO\",\n    \"valorLido\": 1445.027650952233,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"1987-08-04T16:57:06.243Z\",\n    \"anomalia\": true\n  },\n  {\n    \"id\": 242,\n    \"missaoId\": 7609,\n    \"tipoSensor\": \"VIBRACAO\",\n    \"valorLido\": 5153.604579416564,\n    \"unidade\": \"string\",\n    \"dataLeitura\": \"2020-05-29T08:34:22.778Z\",\n    \"anomalia\": true\n  }\n]"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Registrar leitura",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"missaoId\": 3098,\n  \"tipoSensor\": \"TEMPERATURA\",\n  \"unidade\": \"string\",\n  \"valorLido\": 8132.627527837619\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/leituras",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "leituras"
+                  ]
+                },
+                "description": "Registra uma leitura de sensor. Avalia anomalia automaticamente, gera alerta se necessário e recalcula o nível de risco da missão."
+              },
+              "response": [
+                {
+                  "name": "Leitura registrada com sucesso",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"missaoId\": 3098,\n  \"tipoSensor\": \"TEMPERATURA\",\n  \"unidade\": \"string\",\n  \"valorLido\": 8132.627527837619\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/leituras",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "leituras"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"id\": 1507,\n  \"missaoId\": 8690,\n  \"tipoSensor\": \"COMBUSTIVEL\",\n  \"valorLido\": 5832.901526056688,\n  \"unidade\": \"string\",\n  \"dataLeitura\": \"1959-05-01T18:31:59.413Z\",\n  \"anomalia\": true\n}"
+                },
+                {
+                  "name": "Dados inválidos ou missão não está ATIVA",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"missaoId\": 3098,\n  \"tipoSensor\": \"TEMPERATURA\",\n  \"unidade\": \"string\",\n  \"valorLido\": 8132.627527837619\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/leituras",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "leituras"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"id\": 1507,\n  \"missaoId\": 8690,\n  \"tipoSensor\": \"COMBUSTIVEL\",\n  \"valorLido\": 5832.901526056688,\n  \"unidade\": \"string\",\n  \"dataLeitura\": \"1959-05-01T18:31:59.413Z\",\n  \"anomalia\": true\n}"
+                },
+                {
+                  "name": "Missão não encontrada",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"missaoId\": 3098,\n  \"tipoSensor\": \"TEMPERATURA\",\n  \"unidade\": \"string\",\n  \"valorLido\": 8132.627527837619\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/leituras",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "leituras"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"id\": 1507,\n  \"missaoId\": 8690,\n  \"tipoSensor\": \"COMBUSTIVEL\",\n  \"valorLido\": 5832.901526056688,\n  \"unidade\": \"string\",\n  \"dataLeitura\": \"1959-05-01T18:31:59.413Z\",\n  \"anomalia\": true\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "auth",
+          "item": [
+            {
+              "name": "registro",
+              "item": [
+                {
+                  "name": "Registrar novo usuário",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"string\",\n  \"nome\": \"string\",\n  \"senha\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/auth/registro",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "registro"
+                      ]
+                    },
+                    "description": "Cria uma nova conta com email e senha"
+                  },
+                  "response": [
+                    {
+                      "name": "Usuário registrado com sucesso",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"string\",\n  \"nome\": \"string\",\n  \"senha\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/registro",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "registro"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"token\": \"string\",\n  \"tipo\": \"string\",\n  \"id\": 7833,\n  \"email\": \"string\",\n  \"nome\": \"string\"\n}"
+                    },
+                    {
+                      "name": "Dados inválidos",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"string\",\n  \"nome\": \"string\",\n  \"senha\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/registro",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "registro"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"token\": \"string\",\n  \"tipo\": \"string\",\n  \"id\": 7833,\n  \"email\": \"string\",\n  \"nome\": \"string\"\n}"
+                    },
+                    {
+                      "name": "Email já existe",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"string\",\n  \"nome\": \"string\",\n  \"senha\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/registro",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "registro"
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"token\": \"string\",\n  \"tipo\": \"string\",\n  \"id\": 7833,\n  \"email\": \"string\",\n  \"nome\": \"string\"\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "login",
+              "item": [
+                {
+                  "name": "Login",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"string\",\n  \"senha\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/auth/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "login"
+                      ]
+                    },
+                    "description": "Autentica usuário e retorna token JWT"
+                  },
+                  "response": [
+                    {
+                      "name": "Login bem-sucedido",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"string\",\n  \"senha\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/login",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "login"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"token\": \"string\",\n  \"tipo\": \"string\",\n  \"id\": 7833,\n  \"email\": \"string\",\n  \"nome\": \"string\"\n}"
+                    },
+                    {
+                      "name": "Email ou senha inválidos",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"string\",\n  \"senha\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/login",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "login"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"token\": \"string\",\n  \"tipo\": \"string\",\n  \"id\": 7833,\n  \"email\": \"string\",\n  \"nome\": \"string\"\n}"
+                    },
+                    {
+                      "name": "Credenciais inválidas",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"string\",\n  \"senha\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/login",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "login"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"token\": \"string\",\n  \"tipo\": \"string\",\n  \"id\": 7833,\n  \"email\": \"string\",\n  \"nome\": \"string\"\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "alertas",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "resolver",
+                  "item": [
+                    {
+                      "name": "Resolver alerta",
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/alertas/:id/resolver",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "alertas",
+                            ":id",
+                            "resolver"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        },
+                        "description": "Marca um alerta como resolvido. Se o alerta for CRÍTICO, recalcula o nível de risco da missão automaticamente."
+                      },
+                      "response": [
+                        {
+                          "name": "Alerta resolvido com sucesso",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/alertas/:id/resolver",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "alertas",
+                                ":id",
+                                "resolver"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"id\": 994,\n  \"missaoId\": 4187,\n  \"mensagem\": \"string\",\n  \"severidade\": \"AVISO\",\n  \"resolvido\": false,\n  \"dataAlerta\": \"1985-10-21T04:54:44.104Z\"\n}"
+                        },
+                        {
+                          "name": "Alerta já foi resolvido anteriormente",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/alertas/:id/resolver",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "alertas",
+                                ":id",
+                                "resolver"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"id\": 994,\n  \"missaoId\": 4187,\n  \"mensagem\": \"string\",\n  \"severidade\": \"AVISO\",\n  \"resolvido\": false,\n  \"dataAlerta\": \"1985-10-21T04:54:44.104Z\"\n}"
+                        },
+                        {
+                          "name": "Alerta não encontrado",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/alertas/:id/resolver",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "alertas",
+                                ":id",
+                                "resolver"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"id\": 994,\n  \"missaoId\": 4187,\n  \"mensagem\": \"string\",\n  \"severidade\": \"AVISO\",\n  \"resolvido\": false,\n  \"dataAlerta\": \"1985-10-21T04:54:44.104Z\"\n}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "missao",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "pendentes",
+                      "item": [
+                        {
+                          "name": "Listar alertas pendentes",
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/alertas/missao/:id/pendentes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "alertas",
+                                "missao",
+                                ":id",
+                                "pendentes"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            },
+                            "description": "Retorna apenas os alertas não resolvidos de uma missão."
+                          },
+                          "response": [
+                            {
+                              "name": "Lista retornada com sucesso",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/alertas/missao/:id/pendentes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "alertas",
+                                    "missao",
+                                    ":id",
+                                    "pendentes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id",
+                                      "value": "9715"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "body": "[\n  {\n    \"id\": 954,\n    \"missaoId\": 9078,\n    \"mensagem\": \"string\",\n    \"severidade\": \"INFO\",\n    \"resolvido\": true,\n    \"dataAlerta\": \"1993-11-06T12:11:46.636Z\"\n  },\n  {\n    \"id\": 6934,\n    \"missaoId\": 6155,\n    \"mensagem\": \"string\",\n    \"severidade\": \"AVISO\",\n    \"resolvido\": false,\n    \"dataAlerta\": \"1948-05-23T12:25:59.717Z\"\n  }\n]"
+                            },
+                            {
+                              "name": "Missão não encontrada",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/alertas/missao/:id/pendentes",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "alertas",
+                                    "missao",
+                                    ":id",
+                                    "pendentes"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id",
+                                      "value": "9715"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "*/*"
+                                }
+                              ],
+                              "cookie": [],
+                              "body": "[\n  {\n    \"id\": 954,\n    \"missaoId\": 9078,\n    \"mensagem\": \"string\",\n    \"severidade\": \"INFO\",\n    \"resolvido\": true,\n    \"dataAlerta\": \"1993-11-06T12:11:46.636Z\"\n  },\n  {\n    \"id\": 6934,\n    \"missaoId\": 6155,\n    \"mensagem\": \"string\",\n    \"severidade\": \"AVISO\",\n    \"resolvido\": false,\n    \"dataAlerta\": \"1948-05-23T12:25:59.717Z\"\n  }\n]"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Listar alertas por missão",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/alertas/missao/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "alertas",
+                            "missao",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "9715"
+                            }
+                          ]
+                        },
+                        "description": "Retorna todos os alertas de uma missão, ordenados do mais recente para o mais antigo."
+                      },
+                      "response": [
+                        {
+                          "name": "Lista retornada com sucesso",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/alertas/missao/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "alertas",
+                                "missao",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[\n  {\n    \"id\": 954,\n    \"missaoId\": 9078,\n    \"mensagem\": \"string\",\n    \"severidade\": \"INFO\",\n    \"resolvido\": true,\n    \"dataAlerta\": \"1993-11-06T12:11:46.636Z\"\n  },\n  {\n    \"id\": 6934,\n    \"missaoId\": 6155,\n    \"mensagem\": \"string\",\n    \"severidade\": \"AVISO\",\n    \"resolvido\": false,\n    \"dataAlerta\": \"1948-05-23T12:25:59.717Z\"\n  }\n]"
+                        },
+                        {
+                          "name": "Missão não encontrada",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/alertas/missao/:id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "alertas",
+                                "missao",
+                                ":id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "9715"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[\n  {\n    \"id\": 954,\n    \"missaoId\": 9078,\n    \"mensagem\": \"string\",\n    \"severidade\": \"INFO\",\n    \"resolvido\": true,\n    \"dataAlerta\": \"1993-11-06T12:11:46.636Z\"\n  },\n  {\n    \"id\": 6934,\n    \"missaoId\": 6155,\n    \"mensagem\": \"string\",\n    \"severidade\": \"AVISO\",\n    \"resolvido\": false,\n    \"dataAlerta\": \"1948-05-23T12:25:59.717Z\"\n  }\n]"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "criticos",
+              "item": [
+                {
+                  "name": "Listar alertas críticos",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/alertas/criticos",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "alertas",
+                        "criticos"
+                      ]
+                    },
+                    "description": "Retorna todos os alertas com severidade CRÍTICO ainda não resolvidos de todas as missões."
+                  },
+                  "response": [
+                    {
+                      "name": "Lista retornada com sucesso",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/alertas/criticos",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "alertas",
+                            "criticos"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"id\": 954,\n    \"missaoId\": 9078,\n    \"mensagem\": \"string\",\n    \"severidade\": \"INFO\",\n    \"resolvido\": true,\n    \"dataAlerta\": \"1993-11-06T12:11:46.636Z\"\n  },\n  {\n    \"id\": 6934,\n    \"missaoId\": 6155,\n    \"mensagem\": \"string\",\n    \"severidade\": \"AVISO\",\n    \"resolvido\": false,\n    \"dataAlerta\": \"1948-05-23T12:25:59.717Z\"\n  }\n]"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{jwt_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "jwt_token",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
