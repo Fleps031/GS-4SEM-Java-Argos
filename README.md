@@ -12,6 +12,8 @@ O **Projeto Argos** é uma API REST para monitoramento e manutenção preditiva 
 
 Quando uma leitura de sensor ultrapassa os limiares de segurança, o sistema detecta a anomalia automaticamente, gera um alerta e recalcula o nível de risco da missão — simulando o comportamento de uma plataforma de inteligência preditiva para ambientes de missão crítica.
 
+Todos os endpoints são protegidos por **autenticação JWT**. Para acessar a API é necessário primeiro registrar um usuário e obter um token via `/api/auth`.
+
 ---
 
 ## 🌍 ODS Relacionados
@@ -31,7 +33,7 @@ Quando uma leitura de sensor ultrapassa os limiares de segurança, o sistema det
 | Felipe Molinari | RM 559885 |
 | Francisco Vargas | RM 560322 |
 | Matheus Eiki | RM 55948 |
-| Matheus Machado | RM a definir |
+| Matheus Machado Caposse | RM 560340 |
 
 ---
 
@@ -39,6 +41,7 @@ Quando uma leitura de sensor ultrapassa os limiares de segurança, o sistema det
 
 - **Java 17**
 - **Spring Boot 3.x**
+- **Spring Security + JWT** (autenticação e autorização)
 - **Spring Data JPA + Hibernate**
 - **Oracle SQL** (credenciais acadêmicas FIAP)
 - **Maven**
@@ -55,27 +58,60 @@ O projeto segue arquitetura em camadas:
 ```
 br.com.argos
 ├── controller      → Endpoints REST (recebe e responde requisições HTTP)
+│   └── AutenticacaoController.java  → registro e login (públicos)
 ├── service         → Regras de negócio (anomalias, risco, máquina de estados)
 ├── repository      → Interfaces JPA (acesso ao banco de dados)
 ├── model           → Entidades JPA + Enums
 ├── dto             → Objetos de entrada (Request) e saída (Response)
 ├── exception       → Exceções customizadas + GlobalExceptionHandler
-└── config          → Configuração do Swagger/OpenAPI
+└── config          → Swagger/OpenAPI + SecurityConfig + JwtFilter
 ```
 
 ---
 
 ## 🗄️ Modelo de Dados
 
-3 tabelas no Oracle SQL:
+4 tabelas no Oracle SQL:
 
+- **TB_USUARIO** — usuários da plataforma (login/senha para autenticação JWT)
 - **TB_MISSAO** — missões espaciais com status e nível de risco
 - **TB_LEITURA_SENSOR** — leituras de sensores vinculadas a missões
 - **TB_ALERTA** — alertas gerados automaticamente ao detectar anomalias
 
 ---
 
+## 🔐 Autenticação JWT
+
+Todos os endpoints (exceto `/api/auth/registrar` e `/api/auth/login`) exigem um token JWT válido no header da requisição.
+
+### Fluxo de autenticação
+
+```
+1. POST /api/auth/registrar  →  cria o usuário
+2. POST /api/auth/login      →  retorna o token JWT
+3. Usar o token no header:   Authorization: Bearer <token>
+```
+
+### Endpoints públicos — `/api/auth`
+
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `POST` | `/api/auth/registrar` | Registra novo usuário |
+| `POST` | `/api/auth/login` | Autentica e retorna token JWT |
+
+### Como usar no Swagger UI
+
+1. Faça login em `POST /api/auth/login`
+2. Copie o token retornado
+3. Clique em **Authorize** (cadeado 🔒 no topo da página)
+4. Cole o token no campo `Bearer Token` e confirme
+5. Todos os endpoints passam a enviar o token automaticamente
+
+---
+
 ## 📡 Endpoints
+
+> ⚠️ Todos os endpoints abaixo exigem `Authorization: Bearer <token>` no header.
 
 ### Missões — `/api/missoes`
 
@@ -152,8 +188,8 @@ PLANEJADA → ATIVA → CONCLUIDA
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/projeto-argos.git
-cd projeto-argos
+git clone https://github.com/Fleps031/GS-4SEM-Java-Argos.git
+cd GS-4SEM-Java-Argos
 ```
 
 ### 2. Configure as credenciais do banco
@@ -179,29 +215,42 @@ mvn spring-boot:run
 http://localhost:8080/swagger-ui.html
 ```
 
+### 5. Autentique-se
+
+```
+POST http://localhost:8080/api/auth/registrar
+POST http://localhost:8080/api/auth/login  →  copie o token retornado
+```
+
+Cole o token no botão **Authorize** do Swagger UI para liberar todos os endpoints.
+
 > As tabelas são criadas automaticamente no Oracle SQL ao subir a aplicação via `schema.sql`.
 
 ---
 
-## 📂 Estrutura de Arquivos Relevantes
+## 📂 Estrutura de Arquivos
 
 ```
 src/
 ├── main/
 │   ├── java/br/com/argos/
 │   │   ├── controller/
+│   │   │   ├── AutenticacaoController.java
 │   │   │   ├── MissaoController.java
 │   │   │   ├── LeituraSensorController.java
 │   │   │   └── AlertaController.java
 │   │   ├── service/
+│   │   │   ├── AutenticacaoService.java
 │   │   │   ├── MissaoService.java
 │   │   │   ├── LeituraSensorService.java
 │   │   │   └── AlertaService.java
 │   │   ├── repository/
+│   │   │   ├── UsuarioRepository.java
 │   │   │   ├── MissaoRepository.java
 │   │   │   ├── LeituraSensorRepository.java
 │   │   │   └── AlertaRepository.java
 │   │   ├── model/
+│   │   │   ├── Usuario.java
 │   │   │   ├── Missao.java
 │   │   │   ├── LeituraSensor.java
 │   │   │   ├── Alerta.java
@@ -212,6 +261,9 @@ src/
 │   │   ├── dto/
 │   │   ├── exception/
 │   │   └── config/
+│   │       ├── OpenApiConfig.java
+│   │       ├── SecurityConfig.java
+│   │       └── JwtFilter.java
 │   └── resources/
 │       ├── application.properties
 │       └── schema.sql
@@ -225,4 +277,5 @@ src/
 |---|---|
 | Swagger UI | `http://localhost:8080/swagger-ui.html` |
 | OpenAPI JSON | `http://localhost:8080/v3/api-docs` |
-| Repositório | a definir |
+| Repositório | https://github.com/Fleps031/GS-4SEM-Java-Argos |
+| Vídeo explicativo | https://www.youtube.com/watch?v=DPnwoORV_pc |
