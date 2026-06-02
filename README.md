@@ -16,15 +16,6 @@ Todos os endpoints são protegidos por **autenticação JWT**. Para acessar a AP
 
 ---
 
-## 🌍 ODS Relacionados
-
-| ODS | Descrição |
-|---|---|
-| **ODS 9** | Indústria, Inovação e Infraestrutura |
-| **ODS 11** | Cidades e Comunidades Sustentáveis |
-
----
-
 ## 👥 Integrantes
 
 | Nome | RM |
